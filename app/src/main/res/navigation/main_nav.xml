@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/noteListFragment">
+
+    <fragment
+        android:id="@+id/noteListFragment"
+        android:name="com.floatingreels.sharpnote.fragments.NoteListFragment"
+        android:label="SharpNote"
+        tools:layout="@layout/fragment_joke_list" >
+        <action
+            android:id="@+id/noteToDetail"
+            app:destination="@id/noteDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteDetailFragment"
+        android:name="com.floatingreels.sharpnote.fragments.NoteDetailFragment"
+        android:label="SharpNote"
+        tools:layout="@layout/fragment_joke_detail" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.floatingreels.sharpnote.fragments.SettingsFragment"
+        android:label="Settings" />
+</navigation>

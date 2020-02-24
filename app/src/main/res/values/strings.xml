@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SharpNote</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_settingsfragment">Settings</string>
+    <string name="str_btn_delete">Remove</string>
+    <string name="str_btn_detail">Show</string>
+</resources>
