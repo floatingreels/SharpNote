@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.floatingreels.sharpnote.R;
 import com.floatingreels.sharpnote.model.Note;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     class NoteViewHolder extends RecyclerView.ViewHolder {
         final TextView titleTV;
         final TextView contentTV;
-        final Button detailBtn;
+        final MaterialButton detailBtn;
 
 //        final View.OnClickListener detailListener = new View.OnClickListener() {
 //            @Override
