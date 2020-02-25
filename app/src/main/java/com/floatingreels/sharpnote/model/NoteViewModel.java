@@ -1,5 +1,7 @@
 package com.floatingreels.sharpnote.model;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -22,8 +24,8 @@ public class NoteViewModel extends ViewModel {
         notes.setValue(allNotes);
     }
 
-    public void createNote(Note note){
-        allNotes.add(note);
+    public void createNote(Note newNote){
+        notes.getValue().add(newNote);
     }
 
     //READ

@@ -61,7 +61,7 @@ public class NoteListFragment extends Fragment {
         notesRV.setAdapter(noteAdapter);
         //verwijzing naar view model, waar staan alle gegevens en in welke klasse
         //dit fragment is verantwoordelijk voor klasse met de gegevens
-        NoteViewModel noteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
+        NoteViewModel noteViewModel = new ViewModelProvider(getActivity()).get(NoteViewModel.class);
         //observeren voor potentiële wijzigingen
         //kan enkel als scherm in het geheugen bestaat
         noteViewModel.getAllNotes().observe(getViewLifecycleOwner(), new Observer<ArrayList<Note>>(){

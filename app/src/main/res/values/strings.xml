@@ -6,4 +6,6 @@
     <string name="str_settingsfragment">Settings</string>
     <string name="str_btn_delete">Remove</string>
     <string name="str_btn_detail">Show</string>
+    <string name="str_et_create_title">Title</string>
+    <string name="str_et_create_content">Content</string>
 </resources>

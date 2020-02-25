@@ -10,6 +10,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.floatingreels.sharpnote.R;
@@ -19,16 +20,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class NoteCreateFragment extends Fragment {
 
-    private TextView titleTV, contentTV;
+    private EditText titleET, contentET;
     private FloatingActionButton saveBtn;
-
 
     private View.OnClickListener saveListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            NoteViewModel noteViewModel = new ViewModelProvider(getParentFragment()).get(NoteViewModel.class);
-            noteViewModel.createNote(new Note(titleTV.getText().toString(), contentTV.getText().toString()));
-            Navigation.findNavController(view).navigateUp();
+            Note note = new Note(titleET.getText().toString(), contentET.getText().toString());
+            NoteViewModel noteViewModel = new ViewModelProvider(getActivity()).get(NoteViewModel.class);
+            noteViewModel.createNote(note);
+            Navigation.findNavController(view).navigate(R.id.createToList);
         }
     };
 
@@ -40,10 +41,8 @@ public class NoteCreateFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView =  inflater.inflate(R.layout.fragment_note_create, container, false);
 
-
-
-        titleTV = rootView.findViewById(R.id.tv_create_title);
-        contentTV = rootView.findViewById(R.id.tv_create_content);
+        titleET = rootView.findViewById(R.id.et_create_title);
+        contentET = rootView.findViewById(R.id.et_create_content);
 
         saveBtn = rootView.findViewById(R.id.btn_save);
         saveBtn.setOnClickListener(saveListener);
