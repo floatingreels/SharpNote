@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.jakewharton.threetenabp.AndroidThreeTen;
+
 public class MainActivity extends AppCompatActivity {
     //nodig om te kunnen navigeren dmv navhost uit UI
     private NavController navController;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidThreeTen.init(this);
         setContentView(R.layout.activity_main);
 
         //verwijzing maken naar component in UI

@@ -12,13 +12,12 @@ import android.widget.TextView;
 
 import com.floatingreels.sharpnote.R;
 import com.floatingreels.sharpnote.model.Note;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.time.format.DateTimeFormatter;
 
 public class NoteDetailFragment extends Fragment {
 
-    private TextView titleTV, contentTV, dateModiefiedTV;
+    private TextView titleTV, contentTV, dateCreatedTV;
 
     public NoteDetailFragment() {
     }
@@ -31,7 +30,7 @@ public class NoteDetailFragment extends Fragment {
         //verwijzing naar componenten in UI
         titleTV = rootView.findViewById(R.id.tv_detail_title);
         contentTV = rootView.findViewById(R.id.tv_detail_content);
-        dateModiefiedTV = rootView.findViewById(R.id.tv_detail_date);
+        dateCreatedTV = rootView.findViewById(R.id.tv_detail_datecreated);
 
         //bundle opvragen die vanuit de adapter werd meegegeven als argument
         Bundle data = getArguments();
@@ -42,11 +41,9 @@ public class NoteDetailFragment extends Fragment {
 
                 titleTV.setText(note.getTitle());
                 contentTV.setText(note.getContent());
-                dateModiefiedTV.setText(note.getTime().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                dateCreatedTV.setText(note.getTimeCreated().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             }
         }
-
         return rootView;
     }
-
 }

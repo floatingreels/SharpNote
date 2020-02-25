@@ -5,12 +5,14 @@ import java.time.LocalDate;
 
 public class Note implements Serializable {
     private String title, content;
-    private LocalDate time;
+    private final LocalDate timeCreated;
+    private LocalDate timeModified;
+
 
     public Note(String title, String content) {
         this.title = title;
         this.content = content;
-        this.time = LocalDate.now();
+        this.timeCreated = LocalDate.now();
     }
 
     public String getTitle() {
@@ -21,8 +23,12 @@ public class Note implements Serializable {
         return content;
     }
 
-    public LocalDate getTime() {
-        return time;
+    public LocalDate getTimeCreated() {
+        return timeCreated;
+    }
+
+    public LocalDate getTimeModified() {
+        return timeModified;
     }
 
     public void setTitle(String title) {
@@ -33,7 +39,7 @@ public class Note implements Serializable {
         this.content = content;
     }
 
-    public void setTime(LocalDate time) {
-        this.time = time;
+    public void setTimeModified(LocalDate timeModified) {
+        this.timeModified = timeModified;
     }
 }

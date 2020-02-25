@@ -1,6 +1,7 @@
 package com.floatingreels.sharpnote.util;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,7 +38,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
                 //bundle aanmaken om data in te steken
                 Bundle data = new Bundle();
                 //welke gegevens moeten er in de bundle
-                data.putSerializable("passedNote", items.get(position));
+                data.putSerializable("passedNote", filteredItems.get(position));
                 //navcontroller werkt voor de view die aangeklikt is
                 //wat is de bestemming van navigatie en wat wordt meegegeven
                 Navigation.findNavController(view).navigate(R.id.noteToDetail, data);
@@ -53,13 +55,15 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     }
 
     //fields
-    private ArrayList<Note> items;
+    private AppCompatActivity activity;
+    private ArrayList<Note> filteredItems;
     private ArrayList<Note> originalItems;
 
-    //constructor
-    public NoteAdapter() {
-        items = new ArrayList<>();
-        originalItems = new ArrayList<>();
+    //constructor met activity want nodig om te deleten!
+    public NoteAdapter(AppCompatActivity activity) {
+        this.filteredItems = new ArrayList<>();
+        this.originalItems = new ArrayList<>();
+        this.activity = activity;
     }
 
     @NonNull
@@ -77,19 +81,19 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
-        Note currentNote = items.get(position);
+        Note currentNote = filteredItems.get(position);
         holder.titleTV.setText(currentNote.getTitle());
         holder.contentTV.setText(currentNote.getContent());
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return filteredItems.size();
     }
 
     public void addItems (ArrayList<Note> notes){
-        items.clear();
-        items.addAll(notes);
+        filteredItems.clear();
+        filteredItems.addAll(notes);
         originalItems.clear();
         originalItems.addAll(notes);
     }
@@ -104,18 +108,18 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
                 String input = constraint.toString();
                 //als niets getypt wordt, mag alles weergegeven worden
                 if (input.isEmpty()){
-                    items = originalItems;
+                    filteredItems = originalItems;
                 } else {
-                    items = originalItems;
+                    filteredItems = originalItems;
                     //voorlopige lijst aanmaken
                     ArrayList<Note> tempList = new ArrayList<>();
                     //loopen over de verzameling
-                    for (Note element : items ) {
+                    for (Note element : filteredItems) {
                         if (element.getTitle().contains(constraint) || element.getContent().contains(constraint)) {
                             tempList.add(element);
                         }
                     }
-                    items = tempList;
+                    filteredItems = tempList;
                 }
                 return null;
             }

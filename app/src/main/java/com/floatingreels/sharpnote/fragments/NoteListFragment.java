@@ -1,10 +1,12 @@
 package com.floatingreels.sharpnote.fragments;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -71,7 +73,7 @@ public class NoteListFragment extends Fragment {
         //op welke manier gaat recycler view opgevuld worden
         notesRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         //nieuwe instantie aanmaken van adapter om gegevens om te zetten in cards
-        noteAdapter = new NoteAdapter();
+        noteAdapter = new NoteAdapter((AppCompatActivity) getActivity());
         //juiste recycler view linken aan de juiste adapter
         notesRV.setAdapter(noteAdapter);
         //verwijzing naar view model, waar staan alle gegevens en in welke klasse
