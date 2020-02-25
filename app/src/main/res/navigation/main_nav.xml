@@ -30,6 +30,9 @@
         <argument
             android:name="passedNote"
             app:argType="com.floatingreels.sharpnote.model.Note" />
+        <action
+            android:id="@+id/detailToCreate"
+            app:destination="@id/noteCreateFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -40,10 +43,8 @@
         android:name="com.floatingreels.sharpnote.fragments.NoteCreateFragment"
         android:label="SharpNote"
         tools:layout="@layout/fragment_note_create" >
-        <action
-            android:id="@+id/createToList"
-            app:destination="@id/noteListFragment"
-            app:enterAnim="@anim/fragment_open_enter"
-            app:exitAnim="@anim/fragment_open_exit" />
+        <argument
+            android:name="editNote"
+            app:argType="com.floatingreels.sharpnote.model.Note" />
     </fragment>
 </navigation>

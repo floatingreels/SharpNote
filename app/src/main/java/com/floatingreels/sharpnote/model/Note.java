@@ -13,6 +13,7 @@ public class Note implements Serializable {
         this.title = title;
         this.content = content;
         this.timeCreated = LocalDate.now();
+        this.timeModified = LocalDate.now();
     }
 
     public String getTitle() {

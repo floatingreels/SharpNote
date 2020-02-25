@@ -1,11 +1,9 @@
 package com.floatingreels.sharpnote.fragments;
 
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
@@ -32,8 +30,7 @@ import java.util.ArrayList;
 public class NoteListFragment extends Fragment {
 
     private NoteAdapter noteAdapter;
-
-    private FloatingActionButton createBtn;
+    private FloatingActionButton createFAB;
 
     private SearchView.OnQueryTextListener searchListener = new SearchView.OnQueryTextListener() {
         @Override
@@ -88,9 +85,9 @@ public class NoteListFragment extends Fragment {
             }
         });
         //floating action button linken aan component in UI via ID
-        createBtn = rootView.findViewById(R.id.btn_create);
+        createFAB = rootView.findViewById(R.id.fab_note_create);
         //de juiste listener instellen voor floatingactionbutton
-        createBtn.setOnClickListener(createListener);
+        createFAB.setOnClickListener(createListener);
         //view van fragment weergeven
         return rootView;
     }
