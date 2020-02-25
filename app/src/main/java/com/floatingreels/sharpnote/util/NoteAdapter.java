@@ -2,6 +2,7 @@ package com.floatingreels.sharpnote.util;
 
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.floatingreels.sharpnote.R;
@@ -25,12 +27,20 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         final TextView contentTV;
         final MaterialButton detailBtn;
 
-//        final View.OnClickListener detailListener = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        };
+        final View.OnClickListener detailListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //in welke card werd op button geklikt
+                int position = getAdapterPosition();
+                //bundle aanmaken om data in te steken
+                Bundle data = new Bundle();
+                //welke gegevens moeten er in de bundle
+                data.putSerializable("passedNote", items.get(position));
+                //navcontroller werkt voor de view die aangeklikt is
+                //wat is de bestemming van navigatie en wat wordt meegegeven
+                Navigation.findNavController(view).navigate(R.id.noteToDetail, data);
+            }
+        };
 
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);

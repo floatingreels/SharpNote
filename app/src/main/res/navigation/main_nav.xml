@@ -20,7 +20,11 @@
         android:id="@+id/noteDetailFragment"
         android:name="com.floatingreels.sharpnote.fragments.NoteDetailFragment"
         android:label="SharpNote"
-        tools:layout="@layout/fragment_joke_detail" />
+        tools:layout="@layout/fragment_joke_detail" >
+        <argument
+            android:name="passedNote"
+            app:argType="com.floatingreels.sharpnote.model.Note" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.floatingreels.sharpnote.fragments.SettingsFragment"
