@@ -32,16 +32,17 @@ public class NoteListFragment extends Fragment {
     private NoteAdapter noteAdapter;
     private FloatingActionButton createBtn;
 
-    //constructor zonder parameters
-    public NoteListFragment() {
-    }
-
     private View.OnClickListener createListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+
             Navigation.findNavController(view).navigate(R.id.listToCreate);
         }
     };
+
+    //constructor zonder parameters
+    public NoteListFragment() {
+    }
 
     //view van dit fragment inflaten door xml in res\layout
     @Override
