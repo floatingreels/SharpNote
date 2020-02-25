@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.floatingreels.sharpnote.R;
 import com.floatingreels.sharpnote.model.Note;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.time.format.DateTimeFormatter;
 
 public class NoteDetailFragment extends Fragment {
 
@@ -39,7 +42,7 @@ public class NoteDetailFragment extends Fragment {
 
                 titleTV.setText(note.getTitle());
                 contentTV.setText(note.getContent());
-                dateModiefiedTV.setText(note.getTime().toString());
+                dateModiefiedTV.setText(note.getTime().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             }
         }
 

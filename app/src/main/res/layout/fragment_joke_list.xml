@@ -29,4 +29,5 @@
         app:backgroundTint="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/rv_note_list" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

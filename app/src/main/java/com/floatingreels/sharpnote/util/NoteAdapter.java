@@ -47,7 +47,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
             titleTV = itemView.findViewById(R.id.tv_title);
             contentTV = itemView.findViewById(R.id.tv_content);
             detailBtn = itemView.findViewById(R.id.btn_detail);
-//            detailBtn.setOnClickListener(detailListener);
+            detailBtn.setOnClickListener(detailListener);
         }
     }
 

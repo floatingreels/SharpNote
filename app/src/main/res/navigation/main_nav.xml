@@ -15,6 +15,12 @@
             app:destination="@id/noteDetailFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+
+        <action
+            android:id="@+id/listToCreate"
+            app:destination="@id/noteCreateFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/noteDetailFragment"
@@ -29,4 +35,9 @@
         android:id="@+id/settingsFragment"
         android:name="com.floatingreels.sharpnote.fragments.SettingsFragment"
         android:label="Settings" />
+    <fragment
+        android:id="@+id/noteCreateFragment"
+        android:name="com.floatingreels.sharpnote.fragments.NoteCreateFragment"
+        android:label="SharpNote"
+        tools:layout="@layout/fragment_note_create" />
 </navigation>
