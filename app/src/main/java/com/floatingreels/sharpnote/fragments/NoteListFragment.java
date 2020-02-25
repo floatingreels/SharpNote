@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -17,7 +18,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 
 import com.floatingreels.sharpnote.R;
 import com.floatingreels.sharpnote.model.Note;
@@ -28,9 +28,24 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 public class NoteListFragment extends Fragment {
-    //field
+
     private NoteAdapter noteAdapter;
+
     private FloatingActionButton createBtn;
+
+    private SearchView.OnQueryTextListener searchListener = new SearchView.OnQueryTextListener() {
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+            return false;
+        }
+
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            //
+            noteAdapter.getFilter().filter(newText);
+            return false;
+        }
+    };
 
     private View.OnClickListener createListener = new View.OnClickListener() {
         @Override
@@ -76,5 +91,16 @@ public class NoteListFragment extends Fragment {
         createBtn.setOnClickListener(createListener);
         //view van fragment weergeven
         return rootView;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.search_menu, menu);
+        //searchview zoeken in menu item, moet gedowncast worden naar searchview
+        SearchView searchView = (SearchView) menu.findItem(R.id.mi_search).getActionView();
+        //searchview koppelen aan de listener
+        searchView.setOnQueryTextListener(searchListener);
+        super.onCreateOptionsMenu(menu, inflater);
+
     }
 }

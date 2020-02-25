@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,7 +20,7 @@ import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 
-public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder> {
+public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder> implements Filterable {
 
     //inner class
     class NoteViewHolder extends RecyclerView.ViewHolder {
@@ -53,10 +54,12 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
     //fields
     private ArrayList<Note> items;
+    private ArrayList<Note> originalItems;
 
     //constructor
     public NoteAdapter() {
         items = new ArrayList<>();
+        originalItems = new ArrayList<>();
     }
 
     @NonNull
@@ -87,5 +90,41 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     public void addItems (ArrayList<Note> notes){
         items.clear();
         items.addAll(notes);
+        originalItems.clear();
+        originalItems.addAll(notes);
+    }
+
+    @Override
+    public Filter getFilter() {
+
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                //wat gebruiker typt omzetten naar string
+                String input = constraint.toString();
+                //als niets getypt wordt, mag alles weergegeven worden
+                if (input.isEmpty()){
+                    items = originalItems;
+                } else {
+                    items = originalItems;
+                    //voorlopige lijst aanmaken
+                    ArrayList<Note> tempList = new ArrayList<>();
+                    //loopen over de verzameling
+                    for (Note element : items ) {
+                        if (element.getTitle().contains(constraint) || element.getContent().contains(constraint)) {
+                            tempList.add(element);
+                        }
+                    }
+                    items = tempList;
+                }
+                return null;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                //voer methodes van de viewholder opnieuw uit met de gefilterde data
+                notifyDataSetChanged();
+            }
+        };
     }
 }
