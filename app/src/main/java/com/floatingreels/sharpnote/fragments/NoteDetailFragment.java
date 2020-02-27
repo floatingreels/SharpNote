@@ -22,16 +22,17 @@ public class NoteDetailFragment extends Fragment {
 
     private TextView titleTV, contentTV, dateCreatedTV, dateModifiedTV;
     private FloatingActionButton editFAB;
-    private Note note;
+    private Note receivedNote;
     private View.OnClickListener editListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             //bundle aanmaken om data in te steken
             Bundle data = new Bundle();
-            //welke gegevens moeten er in de bundle
-            data.putSerializable("editNote", note);
-            //TODO: Make nav work properly
-            Navigation.findNavController(view).navigate(R.id.detailToCreate);
+            //de gegevens in de bundle zetten (zelfde gegevens die werden ontvangen)
+            data.putSerializable("editNote", receivedNote);
+            //navigatie starten en gegevens mee doorgeven
+            //TODO: skip fragment in backstack. nav graph?
+            Navigation.findNavController(view).navigate(R.id.detailToCreate, data);
         }
     };
 
@@ -55,7 +56,7 @@ public class NoteDetailFragment extends Fragment {
 
         if (reveivedData != null) {
             if (reveivedData.containsKey("passedNote")){
-                Note receivedNote = (Note) reveivedData.getSerializable("passedNote");
+                receivedNote = (Note) reveivedData.getSerializable("passedNote");
 
                 titleTV.setText(receivedNote.getTitle());
                 contentTV.setText(receivedNote.getContent());
