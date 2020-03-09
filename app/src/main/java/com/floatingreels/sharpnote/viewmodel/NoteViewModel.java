@@ -5,7 +5,6 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.floatingreels.sharpnote.model.Note;
 import com.floatingreels.sharpnote.model.NoteDatabase;
@@ -23,26 +22,37 @@ public class NoteViewModel extends AndroidViewModel {
         NOTES = database.getNoteDAO().getAllNotes();
     }
 
-//CREATE
-//    private void loadNotes(){
-//        allNotes = new ArrayList<>();
-//        allNotes.add(new Note("To-do list", "find job\nget rich\ndie trying"));
-//        allNotes.add(new Note("Zakdoek Raketkanon","afmetingen 39 x 39 cm, misschien kader kopen in Lucas Creativ?"));
-//        allNotes.add(new Note("Deurbel", "nieuwe deurbel gaan kopen in Gamma of Brico"));
-//        notes.setValue(allNotes);
-//    }
-
-    // READ
-    public LiveData<List<Note>> getNOTES() {
-        return NOTES;
-    }
-
     // CREATE
     public void createNote(Note note){
         NoteDatabase.databaseExecutor.execute(new Runnable() {
             @Override
             public void run() {
                 database.getNoteDAO().createNote(note);
+            }
+        });
+    }
+
+    // READ
+    public LiveData<List<Note>> getNOTES() {
+        return NOTES;
+    }
+
+    // UPDATE
+    public void updateNote(Note note){
+        NoteDatabase.databaseExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                database.getNoteDAO().updateNote(note);
+            }
+        });
+    }
+
+    // DELETE
+    public void deleteNote(Note note){
+        NoteDatabase.databaseExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                database.getNoteDAO().deleteNote(note);
             }
         });
     }

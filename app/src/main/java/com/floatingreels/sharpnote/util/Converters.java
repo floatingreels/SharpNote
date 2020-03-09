@@ -3,22 +3,22 @@ package com.floatingreels.sharpnote.util;
 import androidx.room.TypeConverter;
 
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.format.DateTimeFormatter;
 
 public class Converters {
 
-    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static org.threeten.bp.format.DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     @TypeConverter
-    public static String dateToPattern(LocalDate localDate) {
+    public static String dateToPattern(org.threeten.bp.LocalDate localDate) {
         String datePattern = localDate.format(formatter);
         return localDate == null ? null : datePattern;
     }
 
     @TypeConverter
-    public static LocalDate stringToDate(String datePattern){
-        LocalDate localDate = LocalDate.parse(datePattern, formatter);
+    public static org.threeten.bp.LocalDate stringToDate(String datePattern){
+        org.threeten.bp.LocalDate localDate = LocalDate.parse(datePattern, formatter);
         return datePattern == null ? null : localDate;
     }
 }

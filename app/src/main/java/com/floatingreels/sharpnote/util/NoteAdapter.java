@@ -2,6 +2,7 @@ package com.floatingreels.sharpnote.util;
 
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,11 +14,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.floatingreels.sharpnote.R;
 import com.floatingreels.sharpnote.model.Note;
+import com.floatingreels.sharpnote.model.NoteDAO;
+import com.floatingreels.sharpnote.model.NoteDatabase;
+import com.floatingreels.sharpnote.viewmodel.NoteViewModel;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -27,10 +32,22 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
     //inner class
     class NoteViewHolder extends RecyclerView.ViewHolder {
+
         final TextView titleTV;
         final TextView contentTV;
         final MaterialButton detailBtn;
+        final MaterialButton deleteBtn;
 
+        final View.OnClickListener deleteListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //in welke card werd op button geklikt
+                int position = getAdapterPosition();
+                NoteViewModel noteViewModel = new NoteViewModel(application);
+                noteViewModel.deleteNote(filteredItems.get(position));
+
+            }
+        };
         final View.OnClickListener detailListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,20 +68,26 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
             titleTV = itemView.findViewById(R.id.tv_title);
             contentTV = itemView.findViewById(R.id.tv_content);
             detailBtn = itemView.findViewById(R.id.btn_detail);
+            deleteBtn = itemView.findViewById(R.id.btn_delete);
             detailBtn.setOnClickListener(detailListener);
+            deleteBtn.setOnClickListener(deleteListener);
+
         }
     }
 
     //fields
-    private AppCompatActivity activity;
+    private Application application;
+    private NoteDatabase database;
     private List<Note> filteredItems;
     private List<Note> originalItems;
 
+
+
     //constructor met activity want nodig om te deleten!
-    public NoteAdapter(AppCompatActivity activity) {
+    public NoteAdapter(Application application) {
         filteredItems = new ArrayList<>();
         originalItems = new ArrayList<>();
-        this.activity = activity;
+        this.application = application;
     }
 
     @NonNull

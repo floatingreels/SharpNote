@@ -8,4 +8,10 @@
     <string name="str_btn_detail">Show</string>
     <string name="str_et_create_title">Title</string>
     <string name="str_et_create_content">Content</string>
+    <string name="str_lp_pref_sort">Sort options</string>
+    <string-array name="str_arr_pref_sort">
+        <item>Sort by title</item>
+        <item>Sort by date created</item>
+        <item>Sort by date modified</item>
+    </string-array>
 </resources>

@@ -44,7 +44,7 @@ public class NoteListFragment extends Fragment {
 
         @Override
         public boolean onQueryTextChange(String newText) {
-            //
+
             noteAdapter.getFilter().filter(newText);
             return false;
         }
@@ -61,7 +61,6 @@ public class NoteListFragment extends Fragment {
     //constructor zonder parameters
     public NoteListFragment() {
     }
-
 
     public static NoteListFragment newInstance(){
         return new NoteListFragment();
@@ -85,7 +84,7 @@ public class NoteListFragment extends Fragment {
         //op welke manier gaat recycler view opgevuld worden
         notesRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         //nieuwe instantie aanmaken van adapter om gegevens om te zetten in cards
-        noteAdapter = new NoteAdapter((AppCompatActivity) getActivity());
+        noteAdapter = new NoteAdapter(getActivity().getApplication());
         //juiste recycler view linken aan de juiste adapter
         notesRV.setAdapter(noteAdapter);
         //verwijzing naar view model, waar staan alle gegevens en in welke klasse

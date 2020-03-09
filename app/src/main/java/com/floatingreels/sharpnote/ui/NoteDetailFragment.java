@@ -15,7 +15,7 @@ import com.floatingreels.sharpnote.R;
 import com.floatingreels.sharpnote.model.Note;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.time.format.DateTimeFormatter;
+import org.threeten.bp.format.DateTimeFormatter;
 
 public class NoteDetailFragment extends Fragment {
 
@@ -59,7 +59,7 @@ public class NoteDetailFragment extends Fragment {
 
                 titleTV.setText(receivedNote.getTitle());
                 contentTV.setText(receivedNote.getContent());
-                dateCreatedTV.setText(receivedNote.getTimeCreated().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                dateCreatedTV.setText(receivedNote.getTimeCreated().format(org.threeten.bp.format.DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 dateModifiedTV.setText(receivedNote.getTimeModified().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             }
         }

@@ -4,8 +4,10 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
+
 import java.io.Serializable;
-import java.time.LocalDate;
 
 @Entity
 public class Note implements Serializable {
