@@ -13,7 +13,7 @@ public class Note implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String title, content;
-    private final LocalDate timeCreated;
+    private LocalDate timeCreated;
     private LocalDate timeModified;
 
     public Note() {
@@ -49,6 +49,10 @@ public class Note implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public void setTimeCreated(LocalDate timeCreated) {
+        this.timeCreated = timeCreated;
     }
 
     public void setTimeModified(LocalDate timeModified) {
