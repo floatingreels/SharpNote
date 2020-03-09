@@ -1,4 +1,4 @@
-package com.floatingreels.sharpnote.util;
+package com.floatingreels.sharpnote.model.util;
 
 import androidx.room.TypeConverter;
 

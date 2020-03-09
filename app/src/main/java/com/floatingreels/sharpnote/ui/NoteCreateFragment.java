@@ -18,10 +18,8 @@ import android.widget.TextView;
 
 import com.floatingreels.sharpnote.R;
 import com.floatingreels.sharpnote.model.Note;
-import com.floatingreels.sharpnote.viewmodel.NoteViewModel;
+import com.floatingreels.sharpnote.model.viewmodel.NoteViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import org.threeten.bp.LocalDate;
 
 public class NoteCreateFragment extends Fragment {
 

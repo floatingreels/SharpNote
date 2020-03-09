@@ -1,7 +1,6 @@
-package com.floatingreels.sharpnote.util;
+package com.floatingreels.sharpnote.ui.util;
 
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
@@ -13,16 +12,13 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.floatingreels.sharpnote.R;
 import com.floatingreels.sharpnote.model.Note;
-import com.floatingreels.sharpnote.model.NoteDAO;
 import com.floatingreels.sharpnote.model.NoteDatabase;
-import com.floatingreels.sharpnote.viewmodel.NoteViewModel;
+import com.floatingreels.sharpnote.model.viewmodel.NoteViewModel;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;

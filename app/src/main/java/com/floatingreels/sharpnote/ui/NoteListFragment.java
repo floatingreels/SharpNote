@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -23,8 +22,8 @@ import android.view.ViewGroup;
 
 import com.floatingreels.sharpnote.R;
 import com.floatingreels.sharpnote.model.Note;
-import com.floatingreels.sharpnote.viewmodel.NoteViewModel;
-import com.floatingreels.sharpnote.util.NoteAdapter;
+import com.floatingreels.sharpnote.model.viewmodel.NoteViewModel;
+import com.floatingreels.sharpnote.ui.util.NoteAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 

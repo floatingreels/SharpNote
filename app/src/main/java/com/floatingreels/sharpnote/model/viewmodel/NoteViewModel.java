@@ -1,4 +1,4 @@
-package com.floatingreels.sharpnote.viewmodel;
+package com.floatingreels.sharpnote.model.viewmodel;
 
 import android.app.Application;
 
