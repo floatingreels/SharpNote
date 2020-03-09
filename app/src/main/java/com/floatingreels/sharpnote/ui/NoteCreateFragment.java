@@ -1,4 +1,4 @@
-package com.floatingreels.sharpnote.fragments;
+package com.floatingreels.sharpnote.ui;
 
 
 import android.os.Bundle;
@@ -15,10 +15,9 @@ import android.widget.TextView;
 
 import com.floatingreels.sharpnote.R;
 import com.floatingreels.sharpnote.model.Note;
-import com.floatingreels.sharpnote.model.NoteViewModel;
+import com.floatingreels.sharpnote.viewmodel.NoteViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 public class NoteCreateFragment extends Fragment {

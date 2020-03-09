@@ -1,14 +1,25 @@
 package com.floatingreels.sharpnote.model;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
+@Entity
 public class Note implements Serializable {
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String title, content;
     private final LocalDate timeCreated;
     private LocalDate timeModified;
 
+    public Note() {
+    }
 
+    @Ignore
     public Note(String title, String content) {
         this.title = title;
         this.content = content;

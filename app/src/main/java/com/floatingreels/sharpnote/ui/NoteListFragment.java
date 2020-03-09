@@ -1,4 +1,4 @@
-package com.floatingreels.sharpnote.fragments;
+package com.floatingreels.sharpnote.ui;
 
 
 import android.os.Bundle;
@@ -21,7 +21,7 @@ import android.view.ViewGroup;
 
 import com.floatingreels.sharpnote.R;
 import com.floatingreels.sharpnote.model.Note;
-import com.floatingreels.sharpnote.model.NoteViewModel;
+import com.floatingreels.sharpnote.viewmodel.NoteViewModel;
 import com.floatingreels.sharpnote.util.NoteAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

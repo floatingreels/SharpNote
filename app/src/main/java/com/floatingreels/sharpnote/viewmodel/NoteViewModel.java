@@ -1,11 +1,9 @@
-package com.floatingreels.sharpnote.model;
-
-import android.util.Log;
+package com.floatingreels.sharpnote.viewmodel;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.floatingreels.sharpnote.fragments.NoteCreateFragment;
+import com.floatingreels.sharpnote.model.Note;
 
 import java.util.ArrayList;
 

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/noteListFragment"
-        android:name="com.floatingreels.sharpnote.fragments.NoteListFragment"
+        android:name="com.floatingreels.sharpnote.ui.NoteListFragment"
         android:label="SharpNote"
         tools:layout="@layout/fragment_joke_list" >
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/noteDetailFragment"
-        android:name="com.floatingreels.sharpnote.fragments.NoteDetailFragment"
+        android:name="com.floatingreels.sharpnote.ui.NoteDetailFragment"
         android:label="SharpNote"
         tools:layout="@layout/fragment_joke_detail" >
         <argument
@@ -36,11 +36,11 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.floatingreels.sharpnote.fragments.SettingsFragment"
+        android:name="com.floatingreels.sharpnote.ui.SettingsFragment"
         android:label="Settings" />
     <fragment
         android:id="@+id/noteCreateFragment"
-        android:name="com.floatingreels.sharpnote.fragments.NoteCreateFragment"
+        android:name="com.floatingreels.sharpnote.ui.NoteCreateFragment"
         android:label="SharpNote"
         tools:layout="@layout/fragment_note_create" >
         <argument

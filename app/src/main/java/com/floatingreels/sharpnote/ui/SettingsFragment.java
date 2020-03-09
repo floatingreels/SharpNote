@@ -1,7 +1,6 @@
-package com.floatingreels.sharpnote.fragments;
+package com.floatingreels.sharpnote.ui;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.preference.PreferenceFragmentCompat;
 
