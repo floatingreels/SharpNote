@@ -1,10 +1,13 @@
 package com.floatingreels.sharpnote.model.viewmodel;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceManager;
 
 import com.floatingreels.sharpnote.model.Note;
 import com.floatingreels.sharpnote.model.NoteDatabase;
@@ -15,9 +18,11 @@ public class NoteViewModel extends AndroidViewModel {
 
     private final LiveData<List<Note>> NOTES;
     private NoteDatabase database;
+    private final Application mApplication;
 
     public NoteViewModel(@NonNull Application application) {
         super(application);
+        mApplication = application;
         database = NoteDatabase.getSharedInstance(application);
         NOTES = database.getNoteDAO().getAllNotes();
     }
@@ -34,6 +39,10 @@ public class NoteViewModel extends AndroidViewModel {
 
     // READ
     public LiveData<List<Note>> getNOTES() {
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(mApplication);
+        String sort = settings.getString("lp_pref_sort", "Sort by title");
+            //TODO: switch
+            switch (sort)
         return NOTES;
     }
 

@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.floatingreels.sharpnote.R;
 import com.floatingreels.sharpnote.model.Note;
-import com.floatingreels.sharpnote.model.NoteDatabase;
 import com.floatingreels.sharpnote.model.viewmodel.NoteViewModel;
 import com.google.android.material.button.MaterialButton;
 
@@ -73,7 +72,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
     //fields
     private Application application;
-    private NoteDatabase database;
     private List<Note> filteredItems;
     private List<Note> originalItems;
 
