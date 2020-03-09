@@ -49,6 +49,7 @@ public class NoteCreateFragment extends Fragment {
         saveFAB = rootView.findViewById(R.id.fab_note_save);
         saveFAB.setOnClickListener(saveListener);
 
+
         //vang de doorgestuurde argumenten op
         Bundle passedData = getArguments();
         //kijken of er gegevens zijn doorgegeven

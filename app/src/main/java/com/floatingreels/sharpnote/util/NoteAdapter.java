@@ -21,6 +21,7 @@ import com.floatingreels.sharpnote.model.Note;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder> implements Filterable {
 
@@ -56,13 +57,13 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
     //fields
     private AppCompatActivity activity;
-    private ArrayList<Note> filteredItems;
-    private ArrayList<Note> originalItems;
+    private List<Note> filteredItems;
+    private List<Note> originalItems;
 
     //constructor met activity want nodig om te deleten!
     public NoteAdapter(AppCompatActivity activity) {
-        this.filteredItems = new ArrayList<>();
-        this.originalItems = new ArrayList<>();
+        filteredItems = new ArrayList<>();
+        originalItems = new ArrayList<>();
         this.activity = activity;
     }
 
@@ -91,7 +92,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         return filteredItems.size();
     }
 
-    public void addItems (ArrayList<Note> notes){
+    public void addItems (List<Note> notes){
         filteredItems.clear();
         filteredItems.addAll(notes);
         originalItems.clear();

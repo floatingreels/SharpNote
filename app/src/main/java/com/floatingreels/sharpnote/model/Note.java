@@ -27,6 +27,10 @@ public class Note implements Serializable {
         this.timeModified = LocalDate.now();
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -41,6 +45,10 @@ public class Note implements Serializable {
 
     public LocalDate getTimeModified() {
         return timeModified;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setTitle(String title) {

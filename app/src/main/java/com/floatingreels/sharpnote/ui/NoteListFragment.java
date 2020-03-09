@@ -1,12 +1,14 @@
 package com.floatingreels.sharpnote.ui;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -25,10 +27,12 @@ import com.floatingreels.sharpnote.viewmodel.NoteViewModel;
 import com.floatingreels.sharpnote.util.NoteAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 public class NoteListFragment extends Fragment {
 
+    private FragmentActivity myContext;
     private NoteAdapter noteAdapter;
     private FloatingActionButton createFAB;
 
@@ -58,6 +62,17 @@ public class NoteListFragment extends Fragment {
     public NoteListFragment() {
     }
 
+
+    public static NoteListFragment newInstance(){
+        return new NoteListFragment();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        myContext = (FragmentActivity)context;
+    }
+
     //view van dit fragment inflaten door xml in res\layout
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,13 +90,14 @@ public class NoteListFragment extends Fragment {
         notesRV.setAdapter(noteAdapter);
         //verwijzing naar view model, waar staan alle gegevens en in welke klasse
         //dit fragment is verantwoordelijk voor klasse met de gegevens
-        NoteViewModel noteViewModel = new ViewModelProvider(getActivity()).get(NoteViewModel.class);
+        NoteViewModel noteViewModel = new ViewModelProvider(myContext).get(NoteViewModel.class);
         //observeren voor potentiële wijzigingen
         //kan enkel als scherm in het geheugen bestaat
-        noteViewModel.getAllNotes().observe(getViewLifecycleOwner(), new Observer<ArrayList<Note>>(){
+        noteViewModel.getNOTES().observe(myContext, new Observer<List<Note>>(){
             @Override
-            public void onChanged(ArrayList<Note> notes) {
+            public void onChanged(List<Note> notes) {
                 noteAdapter.addItems(notes);
+                noteAdapter.notifyDataSetChanged();
             }
         });
         //floating action button linken aan component in UI via ID
